@@ -8,33 +8,10 @@ public class Dog extends Animal {
 
     BreedType breed;
 
-    public Dog(String name, String breed) {
+    public Dog(String name, BreedType breed) {
         super(name);
-        setBreedType(breed);
-        while (!(Pattern.matches("^[A-Z].[a-z]*", this.name)) || this.breed.equals(null)) {
-            System.out.println("Wprowadz poprawna nazwe oraz rase");
-            this.name = in.next();
-            setBreedType(in.next());
-        }
+        this.breed = breed;
         howMuchEatPerDay = new Random().nextInt(8) + 8;
-    }
-
-    public void setBreedType(String breedName) {
-        while (true) {
-            breedName = breedName.toLowerCase();
-            char first = breedName.charAt(0);
-            first -= 32;
-            breedName = breedName.replace(breedName.charAt(0), first);
-            if (breedName.equals("York") || breedName.equals("Bulldog") || breedName.equals("Doberman") || breedName.equals("Husky") || breedName.equals("Labrador")) {
-                BreedCounter breedCounter = new BreedCounter();
-                breedCounter.countBreed(breedName);
-                breed = BreedType.valueOf(breedName);
-                break;
-            } else {
-                System.out.println("Niepoprawna rasa!");
-                breedName = in.next();
-            }
-        }
     }
 
     public BreedType getBreedType() {

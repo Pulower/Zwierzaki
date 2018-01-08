@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 public class House {
 
     static Scanner in = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
     Random rand = new Random();
     int petFood = rand.nextInt(1001) + 500;
 
@@ -58,32 +59,22 @@ public class House {
         for (int i = 0; i < catsAmount; i++) {
             System.out.println("Kot nr " + (i + 1));
             System.out.print("Imie: ");
-            String name = in.next();
+            String name = Utils.validName(in.next());
             System.out.print("Kolor: ");
-            String color = in.next();
-            Cat cat = setCatName(name, color);
+            String color = Utils.validColor();
+            Cat cat = new Cat(name, color);
             animals.add(cat);
         }
-    }
-
-    public Cat setCatName(String catName, String catColor) {
-        while (!(Pattern.matches("^[A-Z].[a-z]*", catName)) || !(Pattern.matches("^[#][0-9A-F]{6}", catColor))) {
-            System.out.println("Niepoprawna nazwa lub kolor");
-            System.out.print("Imie: ");
-            catName = in.next();
-            System.out.print("Kolor: ");
-            catColor = in.next();
-        }
-
-        return new Cat(catName, catColor);
     }
 
     public void addDogs(int dogsAmount, List<Animal> animals) {
         for (int i = 0; i < dogsAmount; i++) {
             System.out.println("Pies nr " + (i + 1));
             System.out.print("Imie oraz rasa: ");
-            String name = in.next();
-            String breed = in.next();
+            String nameAndBreed = Utils.validNameAndBreed();
+            String[] parts = nameAndBreed.split(" ");
+            String name = Utils.validName(parts[0]);
+            BreedType breed = Utils.setBreedType(parts[1]);
             Dog dog = new Dog(name, breed);
             animals.add(dog);
         }

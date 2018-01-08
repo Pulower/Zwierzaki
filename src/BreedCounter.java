@@ -4,11 +4,28 @@ public class BreedCounter {
     private static int breedCount[] = {yorkCount, bulldogCount, huskyCount, labradorCount, dobermanCount};
 
     public void countBreed(String breedName) {
-        if (breedName.equals("York")) breedCount[0]++;
-        else if (breedName.equals("Bulldog")) breedCount[1]++;
-        else if (breedName.equals("Doberman")) breedCount[2]++;
-        else if (breedName.equals("Husky")) breedCount[3]++;
-        else if (breedName.equals("Labrador")) breedCount[4]++;
+        switch (breedName) {
+            case "York": {
+                breedCount[0]++;
+                break;
+            }
+            case "Bulldog": {
+                breedCount[1]++;
+                break;
+            }
+            case "Doberman": {
+                breedCount[2]++;
+                break;
+            }
+            case "Husky": {
+                breedCount[3]++;
+                break;
+            }
+            case "Labrador": {
+                breedCount[4]++;
+                break;
+            }
+        }
     }
 
     public void getCount() {
