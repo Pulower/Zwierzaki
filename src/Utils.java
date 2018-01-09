@@ -3,8 +3,8 @@ import java.util.regex.Pattern;
 
 public class Utils {
 
-    static Scanner in = new Scanner(System.in);
-    static Scanner scanner = new Scanner(System.in);
+    private static Scanner in = new Scanner(System.in);
+    private static Scanner scanner = new Scanner(System.in);
 
     public static int validInt() {
         while (!in.hasNextInt()) {
@@ -16,7 +16,7 @@ public class Utils {
 
     public static String validName(String name) {
         while (!(Pattern.matches("^[A-Z].[a-z]*", name))) {
-            System.out.println("Niepoprawna nazwa!");
+            System.out.println("Niepoprawna nazwa! Podaj nazwe z duzej litery.");
             name = in.next();
         }
         return name;
@@ -24,8 +24,8 @@ public class Utils {
 
     public static String validColor() {
         String color = in.next();
-        while (!(Pattern.matches("^[#][0-9A-F]{6}", color))) {
-            System.out.println("Niepoprawny kolor!");
+        while (!(Pattern.matches("^[#][0-9A-Fa-f]{6}", color))) {
+            System.out.println("Niepoprawny kolor! Podaj kolor w formacie HEX (np #123def)");
             color = in.next();
         }
         return color;

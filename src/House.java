@@ -5,36 +5,31 @@ import java.util.regex.Pattern;
 
 public class House {
 
-    static Scanner in = new Scanner(System.in);
-    static Scanner scanner = new Scanner(System.in);
-    Random rand = new Random();
-    int petFood = rand.nextInt(1001) + 500;
+    private static Scanner in = new Scanner(System.in);
+    private Random rand = new Random();
+    private int petFood = rand.nextInt(1001) + 500;
+    private int dailyFood = 0;
+    private int catFood = 0;
+    private int dogFood = 0;
+    private int lackOfFood;
 
     public void tryToGuess(List<Animal> animals, int dogsAmount, int catsAmount) {
-        int dailyFood = 0;
-        int catFood = 0;
-        int dogFood = 0;
+
+        divideFood(animals);
+        guessHowManyDays(lackOfFood);
+        showStats(animals, dogsAmount, catsAmount, catFood, dogFood, dailyFood, lackOfFood);
+    }
+
+    private void divideFood(List<Animal> animals) {
         for (Animal a : animals) {
             dailyFood += a.howMuchEatPerDay;
             if (a instanceof Dog) dogFood += a.howMuchEatPerDay;
             else catFood += a.howMuchEatPerDay;
         }
-        int lackOfFood = petFood / dailyFood + 1;
-        boolean goodAnswer = false;
-        System.out.println("Zgadnij po ilu dniach skonczy sie jedzenie");
+        lackOfFood = petFood / dailyFood + 1;
+    }
 
-        do {
-            int answer = in.nextInt();
-            if (answer == lackOfFood) {
-                System.out.println("Brawo zgadles!");
-                goodAnswer = true;
-            } else if (answer < lackOfFood) {
-                System.out.println("Troche wiecej");
-            } else {
-                System.out.println("Troche mniej");
-            }
-        } while (!goodAnswer);
-
+    private void showStats(List<Animal> animals, int dogsAmount, int catsAmount, int catFood, int dogFood, int dailyFood, int lackOfFood) {
         for (Animal a : animals) {
             if (a instanceof Dog) {
                 System.out.println(a);
@@ -52,15 +47,30 @@ public class House {
         breedCounter.getCount();
         System.out.println("W domu bylo " + petFood + " jedzenia");
         System.out.println("Karma sie skonczyla po: " + lackOfFood);
+    }
 
+    private void guessHowManyDays(int lackOfFood) {
+        System.out.println("Zgadnij po ilu dniach skonczy sie jedzenie");
+        boolean goodAnswer = false;
+        do {
+            int answer = in.nextInt();
+            if (answer == lackOfFood) {
+                System.out.println("Brawo zgadles!");
+                goodAnswer = true;
+            } else if (answer < lackOfFood) {
+                System.out.println("Troche wiecej");
+            } else {
+                System.out.println("Troche mniej");
+            }
+        } while (!goodAnswer);
     }
 
     public void addCats(int catsAmount, List<Animal> animals) {
         for (int i = 0; i < catsAmount; i++) {
             System.out.println("Kot nr " + (i + 1));
             System.out.print("Imie: ");
-            String name = Utils.validName(in.next());
-            System.out.print("Kolor: ");
+            String name = Utils.validName(in.nextLine());
+            System.out.print("Kolor HEX: ");
             String color = Utils.validColor();
             Cat cat = new Cat(name, color);
             animals.add(cat);
@@ -85,6 +95,4 @@ public class House {
             a.getSound();
         }
     }
-
-
 }

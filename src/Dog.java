@@ -4,9 +4,7 @@ import java.util.regex.Pattern;
 
 public class Dog extends Animal {
 
-    Scanner in = new Scanner(System.in);
-
-    BreedType breed;
+    private BreedType breed;
 
     public Dog(String name, BreedType breed) {
         super(name);
@@ -25,6 +23,4 @@ public class Dog extends Animal {
     public String toString() {
         return "Imie: " + name + "\tRasa: " + getBreedType() + "\tZjada dziennie: " + howMuchEatPerDay;
     }
-
-
 }

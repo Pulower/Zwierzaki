@@ -45,5 +45,4 @@ public class BreedCounter {
         }
         return difBreeds;
     }
-
 }

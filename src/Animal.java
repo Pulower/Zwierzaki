@@ -5,7 +5,6 @@ public abstract class Animal {
 
     public Animal(String name) {
         this.name = name;
-
     }
 
     public int eat(int amountOfFood) {
