@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Zwierzaki.iml" filepath="$PROJECT_DIR$/Zwierzaki.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Zwierzaki_main.iml" filepath="$PROJECT_DIR$/.idea/modules/Zwierzaki_main.iml" group="Zwierzaki" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Zwierzaki_test.iml" filepath="$PROJECT_DIR$/.idea/modules/Zwierzaki_test.iml" group="Zwierzaki" />
     </modules>
   </component>
 </project>
