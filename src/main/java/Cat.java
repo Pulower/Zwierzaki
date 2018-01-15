@@ -13,9 +13,8 @@ public class Cat extends Animal {
         isHungry = true;
     }
 
-    public String getSound() {
+    public void getSound() {
         System.out.println(name + " Miau Miau");
-        return name + " Miau Miau";
     }
 
     public String drawColor() {
