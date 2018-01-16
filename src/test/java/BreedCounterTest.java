@@ -5,6 +5,6 @@ public class BreedCounterTest {
     BreedCounter bc = new BreedCounter();
     @Test
     public void differentBreedsTest(){
-        Assert.assertEquals(bc.differentBreeds(), "0");
+        Assert.assertEquals(bc.differentBreeds(), 0);
     }
 }

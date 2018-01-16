@@ -12,6 +12,11 @@
         <class name="DogTest"/>
     </classes>
 </test>
+    <test name="BreedCounterTest">
+        <classes>
+            <class name="BreedCounterTest"/>
+        </classes>
+    </test>
     <test name="ValidationTest">
         <classes>
             <class name="UtilsTest"/>
