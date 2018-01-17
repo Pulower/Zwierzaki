@@ -32,7 +32,6 @@ public class Utils {
     }
 
     public static BreedType setBreedType(String breedName) {
-        BreedType breed = null;
         while (true) {
             breedName = breedName.toLowerCase();
             char first = breedName.charAt(0);
@@ -45,7 +44,7 @@ public class Utils {
                 case "Doberman":
                 case "Husky":
                 case "Labrador": {
-                    return countAndSet(breedName, breed);
+                    return countAndSet(breedName);
                 }
                 default: {
                     System.out.println("Niepoprawna rasa!");
@@ -55,10 +54,10 @@ public class Utils {
         }
     }
 
-    public static BreedType countAndSet(String breedName, BreedType breed) {
+    private static BreedType countAndSet(String breedName) {
         BreedCounter breedCounter = new BreedCounter();
         breedCounter.countBreed(breedName);
-        breed = BreedType.valueOf(breedName);
+        BreedType breed = BreedType.valueOf(breedName);
         return breed;
     }
 
